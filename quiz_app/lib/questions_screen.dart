@@ -18,8 +18,6 @@ class _QuestionsScreanState extends State<QuestionsScrean> {
   answerQuestion(String answer) {
     widget.onSelectAnswer(answer);
     setState(() {
-      // currentQuestionIndex = currentQuestionIndex + 1;
-      // currentQuestionIndex += 1;
       currentQuestionIndex++;
     });
   }
@@ -45,8 +43,12 @@ class _QuestionsScreanState extends State<QuestionsScrean> {
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 30),
-            ...currentQuestion.getShuffledAnswers().map((item) {
-              return AnswerButton(text: item, onTap: answerQuestion(item));
+            ...currentQuestion.getShuffledAnswers.map((item) {
+              return AnswerButton(
+                  text: item,
+                  onTap: () {
+                    answerQuestion(item);
+                  });
             }),
           ],
         ),
